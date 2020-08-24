@@ -1,0 +1,18 @@
+from PyPDF2 import PdfFileWriter, PdfFileReader
+import os
+
+os.chdir('C:\\Users\\lstsuser03\\Documents\\My Python Projects')
+os.getcwd()
+
+pages_to_keep = list(range(32)) # page numbering starts from 0
+pages_to_keep.remove(0)
+
+infile = PdfFileReader('ACA Media - FS 2019 signed.pdf', 'rb')
+output = PdfFileWriter()
+
+for i in pages_to_keep:
+    p = infile.getPage(i)
+    output.addPage(p)
+
+with open('ACA Media - FS 2019 sgnd.pdf', 'wb') as f:
+    output.write(f)
