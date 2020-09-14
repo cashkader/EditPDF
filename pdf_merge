@@ -1,0 +1,13 @@
+import os
+from PyPDF2 import PdfFileMerger
+
+os.chdir(r'C:\Users\lstsuser03\Documents\My Python Projects\Prior year FSs')
+
+pdfs = ['Elis Distribution - FS 2016 sgnd.pdf', 'Elis Distribution - FS 2017 sgnd.pdf', 'Elis Distribution - FS 2018 sgnd.pdf']
+merger = PdfFileMerger()
+for pdf in pdfs:
+    merger.append(pdf)
+
+merger.write("result.pdf")
+merger.close()
+
