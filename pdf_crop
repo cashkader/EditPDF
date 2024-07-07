@@ -12,22 +12,12 @@ print(page.cropBox.getUpperRight())
 print(page.cropBox.getLowerRight())
 
 writer = PdfWriter()
-for i in range (0,133):
+for i in range (11,133):
     page = reader.pages[i]
     page.cropbox.lower_left=(213,295)
-    page.cropbox.upper_right=(400,503)
+    page.cropbox.upper_right=(365,500)
     writer.add_page(page)
 
 outstream = open('crop.pdf', 'wb')
-writer.write(outstream)
-outstream.close()
-
-for i in range (11,133):
-    page = reader.pages[i]
-    page.cropbox.lower_left=(63,158)
-    page.cropbox.upper_right=(238,360)
-    writer.add_page(page)
-
-outstream = open('croppedDown.pdf', 'wb')
 writer.write(outstream)
 outstream.close()
