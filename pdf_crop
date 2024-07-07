@@ -1,0 +1,33 @@
+from PyPDF2 import PdfReader, PdfWriter
+import os
+
+os.chdir(r'C:\Users\markr\Downloads\CropPDF')
+reader = PdfReader('full.pdf', 'r')
+len(reader.pages)
+
+page = reader.getPage(0)
+print(page.cropBox.getLowerLeft())
+print(page.cropBox.getUpperLeft())
+print(page.cropBox.getUpperRight())
+print(page.cropBox.getLowerRight())
+
+writer = PdfWriter()
+for i in range (0,133):
+    page = reader.pages[i]
+    page.cropbox.lower_left=(213,295)
+    page.cropbox.upper_right=(400,503)
+    writer.add_page(page)
+
+outstream = open('crop.pdf', 'wb')
+writer.write(outstream)
+outstream.close()
+
+for i in range (11,133):
+    page = reader.pages[i]
+    page.cropbox.lower_left=(63,158)
+    page.cropbox.upper_right=(238,360)
+    writer.add_page(page)
+
+outstream = open('croppedDown.pdf', 'wb')
+writer.write(outstream)
+outstream.close()
